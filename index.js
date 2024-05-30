@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const { authroute } = require("./routes/auth.route");
 const { UserModel } = require("./models/role.model");
 const { auth } = require("./middleware/auth.middleware");
+const { access } = require("./middleware/access.middleware");
 
 
 dotenv.config();
@@ -24,7 +25,7 @@ app.get("/home", (req, res)=>{
     res.json({msg:"this is the about page"})
  });
 
- app.get("/movie", auth, (req, res)=>{
+ app.get("/movie", auth,  access("seller", "buyer"), (req, res)=>{
     res.json({msg:"this is the movie page"})
  });
 

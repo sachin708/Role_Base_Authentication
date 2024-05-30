@@ -37,7 +37,7 @@ authroute.post("/login", async(req, res)=>{
       if(user){
         bcrypt.compare(pass, user.pass, function(err, result) {
            if(result){
-            res.json({msg:"user is login", "token" : jwt.sign({ foo: 'bar' }, 'shhhhh')})
+            res.json({msg:"user is login", "token" : jwt.sign({ userID:user._id }, 'shhhhh')})
            } else {
             res.json({msg:"wrong password"})
            }
