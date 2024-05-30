@@ -1,4 +1,4 @@
-
+//access middleware
 const access = (...permittedrole)=>{
     return (req, res, next)=>{
         if(permittedrole.includes(req.role)){
